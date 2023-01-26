@@ -6,6 +6,7 @@ public class Actividad43Main {
         int[]a=new int[10];
         arrayRandom(a);
         System.out.println(Arrays.toString(a));
+
         // Imprime el array anterior empezando por la última posición
        imprimeLast(a);
 
@@ -19,20 +20,19 @@ public class Actividad43Main {
         System.out.println(Arrays.binarySearch(a,25));
 
         // Compara dos arrays recibidos por parametros, devolviendo si son iguales o no
-        int[]b=new int[10];
-        arrayRandom(b);
-        System.out.println(Arrays.equals(a,b));
+        int[]b=a;
+        //arrayRandom(b);
+        System.out.println("Los arrays son iguales?= "+compararArrays(a,b));
 
         // Realiza 4 copias del array en nuevo array de cuatro posiciones
-        int[][]copy=new int[10][3];
-        copyArrays(a,copy);
+        //int[][]copy=new int[10][3];
+        //copyArrays(a,copy);
     }
     // Metodo numero aleatorio
     public static int [] arrayRandom(int[]a){
         Random r1=new Random();
         for (int i = 0; i < a.length; i++) {
-            int b = (int) r1.nextInt(50);
-            a[i] = b;
+            a[i]= (int) r1.nextInt(50);
         }
         return a;
     }
@@ -55,6 +55,13 @@ public class Actividad43Main {
 
     }
 
+    // Metodo ordenar array
+    static int[] ordenArray (int[]a){
+        Arrays.sort(a);
+        return a;
+    }
+
+
     // Metodo de busqueda manual
      static int manualSearch(int[]a, int x){
         for (int i = 0; i < a.length; i++) {
@@ -65,6 +72,12 @@ public class Actividad43Main {
         return -1;
     }
 
+    // Metodo comparar arrays
+    static boolean compararArrays(int[]a, int[]b){
+        boolean xd=Arrays.equals(a,b);
+        return xd;
+    }
+
     // Metodo copia de arrays
     static int copyArrays(int []a,int[][]s){
         for (int i = 0; i < s.length; i++) {
@@ -73,6 +86,6 @@ public class Actividad43Main {
             s[i][2]=Arrays.copyOfRange(a,0,9);
             s[i][3]=System.arraycopy(a,0,s,0,a.length);
         }
-        return a;
+        return s;
     }
 }
